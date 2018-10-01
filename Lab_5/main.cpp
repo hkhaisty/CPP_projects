@@ -12,7 +12,7 @@ int main() {
             for (int j = i; j * i < N; j++) a[i * j] = 0;
 
     for (i = 2; i < N; i++)
-        
+
         if (a[i]) cout << " " << i;
     cout << endl;
 }
