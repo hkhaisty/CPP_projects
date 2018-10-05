@@ -1,0 +1,253 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{float}
+
+\usepackage{geometry}
+\geometry{a4paper}
+\geometry{margin = .5in}
+
+\usepackage{graphicx}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\title{Lab 1 Accompanying Document}
+\author{Harry Haisty}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Output}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=15cm, height = 15cm,keepaspectratio]{Lab_1_Snip}
+\caption{Printed output for lab 1}
+\end{figure}
+
+\section*{The Description}
+This program was designed to take in a set of double values, add them to a dynamically-sized list, and then use a variety of methods to determine different mathematical qualities of the contents of the list. This includes the length, or size of the list, the sum of the elements of the list, the mean of the values of the list, the minimum number of the list, and the maximum number of the list. 
+\newline
+The program also includes a "next" function, which allows you to hard code new values into the list, or could potentially accept user input from the console. The program also has a "clear" function written in, which drops all of the values from the list and prepares it for new inputs. 
+
+\newpage
+\section*{The Code}
+
+\subsection*{Statistician.h}
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+
+using namespace std; 
+
+class statistician
+{
+public:
+	statistician();
+	void next(double r);
+	void reset();
+	int length();
+	double sum();
+	double mean();
+	double minimum();
+	double maximum();
+	int count;       // How many numbers in the sequence
+	double total;    // The sum of all the numbers in the sequence
+	double tinyest;  // The smallest number in the sequence
+	double largest;  // The largest number in the sequence
+private: 
+	vector <double> vector_list;
+	
+};
+
+\end{lstlisting}
+
+
+\subsection*{Lab1.cpp}
+\begin{lstlisting}
+#include "stdafx.h"
+#include "Statistician.h"
+
+/*Lab 1 Data Structures
+Harriet Haisty
+Codename: Cheese Puff
+Dr. Eyles
+08/27/18*/
+
+int main()
+{
+	//create new statistician
+	statistician new_stat;
+	
+	//feed in several numbers to statistician
+	new_stat.next(23);
+	new_stat.next(54);
+	new_stat.next(32);
+	new_stat.next(92);
+	new_stat.next(81);
+	new_stat.next(17);
+
+	//call length method to print
+	cout << "Length: " << new_stat.length() << endl;
+
+	//call sum method to print
+	cout << "Sum: " << new_stat.sum() << endl;
+
+	//call mean method to print
+	cout << "Mean: " << new_stat.mean() << endl;
+
+	//call minimum method to print
+	cout << "Minimum: " << new_stat.minimum() << endl;
+
+	//call maximum method to print
+	cout << "Maximum: " << new_stat.maximum() << endl;
+
+	//call reset function
+	new_stat.reset();
+
+	//add a new set of values into statistician
+	new_stat.next(64);
+	new_stat.next(12);
+	new_stat.next(26);
+	new_stat.next(42);
+	new_stat.next(11);
+	new_stat.next(97);
+
+	//print a new line and call methods again to display new #'s
+	cout << "\nLength: " << new_stat.length() << endl;
+	cout << "Sum: " << new_stat.sum() << endl;
+	cout << "Mean: " << new_stat.mean() << endl;
+	cout << "Minimum: " << new_stat.minimum() << endl;
+	cout << "Maximum: " << new_stat.maximum() << endl;
+
+	//hold console window open
+	cin.get();
+}
+\end{lstlisting}
+
+\subsection*{Statistician.cpp}
+\begin{lstlisting}
+#include "stdafx.h"
+#include "Statistician.h"
+
+//default constructor
+statistician::statistician()
+{
+ 
+}
+
+void statistician::next(double r)
+{
+	//add double value passed in as "r" to a resizeable list, or vector list
+	return vector_list.push_back(r);
+}
+
+void statistician::reset() 
+{
+	//drop all values from vector list
+	return vector_list.clear();
+}
+int statistician::length() 
+{
+	//return number of elements inside list
+	return vector_list.size(); 
+}
+double statistician::sum()
+{
+	//declare/initialize sum value
+	double sum_of_elements = 0;
+
+	//loop through and add all element values to sum value
+	for (size_t i = 0; i < vector_list.size(); i++)
+	{
+		sum_of_elements += vector_list.at(i);
+	}
+
+	//return new number
+	return sum_of_elements;
+}
+double statistician::mean() 
+{
+	//call sum method, divide sum of values by number of values
+	double value = sum() / vector_list.size(); 
+	return value; 
+}
+double statistician::minimum() 
+{
+	//catch in case user has not put any values into the list
+	if (vector_list.size() == 0)
+	{
+		throw "Empty list";
+	}
+
+	//declare/initialize minimum value variable to first value in list
+	double minimum_value = vector_list.at(0);
+
+	//loop through and compare all values to minimum, if they are smaller, replace min value
+	for (size_t i = 1; i < vector_list.size(); i++)
+	{
+		if (vector_list.at(i) < minimum_value)
+		{
+			minimum_value = vector_list.at(i);
+		}
+	}
+	//return the smallest value
+	return minimum_value;
+}
+double statistician::maximum() 
+{
+	//catch if there are no values in the list
+	if (vector_list.size() == 0)
+	{
+		throw "Empty list";
+	}
+
+	//initialize maximum value to first element in the list
+	double maximum_value = vector_list.at(0);
+
+	//loop through, if a value in the list is bigger than current max value, replace max value with that value
+	for (size_t i = 1; i > vector_list.size(); i++)
+	{
+		if (vector_list.at(i) > maximum_value)
+		{
+			maximum_value = vector_list.at(i);
+		}
+	}
+
+	//return the biggest number
+	return maximum_value;
+}
+
+//statistician::~statistician()
+//{
+//}
+
+\end{lstlisting}
+
+
+
+
+
+\end{document}
