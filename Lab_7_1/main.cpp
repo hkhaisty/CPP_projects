@@ -39,7 +39,7 @@ int main() {
     //this calls the integer method by casting the values of i and j to type int
     y = maxValue<int>(i, j);
 
-    //all three results are standardized 
+    //all three results are standardized
     cout << "Generic Type Result: " <<k << endl;
     cout << "Double Method Result: " << z << endl;
     cout << "Integer Method Result: " << y << endl;
