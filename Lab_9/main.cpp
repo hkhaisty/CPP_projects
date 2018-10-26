@@ -5,75 +5,100 @@ int current_year = 2017;
 const double PI = 3.14159;
 
 class container {
-public: int percent_loaded;
+public:
+    int percent_loaded;
+
     container() {
         cout << " Calling container default constructor." << endl;
     }
 
 };
-//Syntax:
-//class subclass_name : public superclass_name { };
 
 class box : public container {
-public: double height, width, length;
+public:
+    double height, width, length;
+
     box() {
         cout << " Calling box default constructor." << endl;
     }
 
-    double volume(){
+    double volume() {
         return height * length * width;
     }
 };
 
 class cylinder : public container {
 public:
-    cylinder(){}
-    cylinder(double rad, double len)
-    {radius = rad; length = len;}
+    cylinder() {}
+
+    cylinder(double rad, double len) {
+        radius = rad;
+        length = len;
+    }
+
     double radius, length;
-    double volume ( ) {return PI * radius * radius * length;}
+
+    double volume() { return PI * radius * radius * length; }
 };
 
 class rail_car {
-public: int year_built;
+public:
+    int year_built;
+
     rail_car() {
         cout << " Calling rail_car default constructor." << endl;
     }
-    int age() {return current_year - year_built;}
+
+    int age() { return current_year - year_built; }
 };
 
 class box_car : public rail_car, public box {
-public: box_car(){
+public:
+    box_car() {
         cout << " Calling box_car default constructor." << endl;
-        height = 10.0; length = 40.0; width = 9.0;
+        height = 10.0;
+        length = 40.0;
+        width = 9.0;
     }
 };
 
 class tank_car : public rail_car, public cylinder {
 public:
-    tank_car ( ) : cylinder (3.5, 40.0) { }
+    tank_car() : cylinder(3.5, 40.0) {}
 };
+
 class engine : public rail_car {
-public: engine ( ) { }
+public:
+    engine() {}
 };
+
 class caboose : public rail_car {
-public: caboose ( ) { }
+public:
+    caboose() {}
 };
 
-
-// ??
 rail_car *train[100];
 
-int main( ) {
-    // ??
+int main() {
     int car_count, type_code;
-    // Read type number and create corresponding objects:
-    for (car_count = 0; cin >> type_code; ++car_count)
-        if (type_code == 0)        train[car_count] = new engine;
-        else if (type_code == 1)   train[car_count] = new box_car;
-        else if (type_code == 2)   train[car_count] = new tank_car;
-        else if (type_code == 3)   train[car_count] = new caboose;
-    // ??
+
+    cout << "Enter type of train car:  \n0: Engine \n1: Box Car \n2: Tank Car \n3: Caboose"<< endl;
+
+    for (car_count = 0; cin >> type_code; ++car_count) {
+        cout << "Enter type of train car:  \n0: Engine \n1: Box Car \n2: Tank Car \n3: Caboose"<< endl;
+        if (type_code == 0) {
+            train[car_count] = new engine;
+        } else if (type_code == 1) {
+            train[car_count] = new box_car;
+        } else if (type_code == 2) {
+            train[car_count] = new tank_car;
+        } else if (type_code == 3) {
+            train[car_count] = new caboose;
+        } else if (type_code == 4) {
+            break;
+        }
+    }
+
     cout << "There are " << car_count << " cars in the array." << endl;
 }
 
