@@ -11,7 +11,6 @@ public:
     container() {
         cout << " Calling container default constructor." << endl;
     }
-
 };
 
 class box : public container {
@@ -82,10 +81,12 @@ rail_car *train[100];
 int main() {
     int car_count, type_code;
 
-    cout << "Enter type of train car:  \n0: Engine \n1: Box Car \n2: Tank Car \n3: Caboose"<< endl;
+    cout
+            << "Enter type of train car:  \n0: Engine \n1: Box Car \n2: Tank Car \n3: Caboose \n4: Remove Car \n5: Add Car \n6: Exit"
+            << endl;
 
     for (car_count = 0; cin >> type_code; ++car_count) {
-        cout << "Enter type of train car:  \n0: Engine \n1: Box Car \n2: Tank Car \n3: Caboose"<< endl;
+
         if (type_code == 0) {
             train[car_count] = new engine;
         } else if (type_code == 1) {
@@ -95,10 +96,17 @@ int main() {
         } else if (type_code == 3) {
             train[car_count] = new caboose;
         } else if (type_code == 4) {
+            car_count-=2;
+        } else if (type_code == 5) {
+            car_count++;
+        } else if (type_code == 6) {
             break;
         }
+        cout
+                << "Enter type of train car:  \n0: Engine \n1: Box Car \n2: Tank Car \n3: Caboose \n4: Remove Car \n5: Add Car \n6: Exit"
+                << endl;
     }
 
-    cout << "There are " << car_count << " cars in the array." << endl;
+    cout << "There are " << car_count << " cars in the train." << endl;
 }
 
