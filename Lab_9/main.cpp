@@ -81,10 +81,12 @@ rail_car *train[100];
 int main() {
     int car_count, type_code;
 
+    //Displays menu for user input
     cout
             << "Enter type of train car:  \n0: Engine \n1: Box Car \n2: Tank Car \n3: Caboose \n4: Remove Car \n5: Add Car \n6: Exit"
             << endl;
 
+    //for loop allows user input until terminal value is reached
     for (car_count = 0; cin >> type_code; ++car_count) {
 
         if (type_code == 0) {
@@ -95,13 +97,15 @@ int main() {
             train[car_count] = new tank_car;
         } else if (type_code == 3) {
             train[car_count] = new caboose;
+            //decrements by 2 to account for increment value encased in for loop
         } else if (type_code == 4) {
-            car_count-=2;
+            car_count -= 2;
         } else if (type_code == 5) {
             car_count++;
         } else if (type_code == 6) {
             break;
         }
+        //continues to display menu for user input
         cout
                 << "Enter type of train car:  \n0: Engine \n1: Box Car \n2: Tank Car \n3: Caboose \n4: Remove Car \n5: Add Car \n6: Exit"
                 << endl;
