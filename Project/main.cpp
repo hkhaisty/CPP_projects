@@ -7,34 +7,39 @@ using namespace std;
 
 typedef chrono::high_resolution_clock Clock;
 
+
 int main() {
 
 
-    //include standard clock
+   //start chrono clock and save time
     auto start_bubble_sort = Clock::now();
-
-
-    //read in .csv file
-    //implement bubble_sort here
+    //parse CSV to make array
+    void parseCSV();
+    //implement bubble sort method
+    void bubble_sort();
+    //end chrono clock and save time
     auto end_bubble_sort = Clock::now();
 
+    //start chrono merge clock
+    auto start_merge_sort = Clock::now();
+    //parse CSV to make array
+    void parseCSV();
+    //implement merge sort algorithm
+    void merge_sort();
+    //end chrono clock and save time
+    auto end_merge_sort = Clock::now();
 
-    //include standard clock end
-    //calculate runtime for bubble sort
+    //start chrono clock and save time
+    auto start_quick_sort = Clock::now();
+    //parse CSV for array
+    void parseCSV();
+    //implement quick sort array
+    void quick_sort();
+    //end clock and save time
+    auto end_quick_sort = Clock::now();
 
-    //double bubbble_sort_runtime = (double)(end_bubble_sort - start_bubble_sort);
-
-    cout << "Bubble sort runtime: " << chrono::duration_cast<chrono::nanoseconds>(end_bubble_sort - start_bubble_sort).count() << " nanoseconds." << endl;
-
-    //include standard clock
-    //read in .csv file again
-
-    //implement merge sort here
-
-    //include standard clock end
-    //end clock time
-
-    cout << "the runtime for bubble sort is : [add bubble sort time]\n";
-    cout << "the runtime for merge sort is: [add merge sort time]";
-
+    //print out end time minus start time to calculate nanoseconds taken to run
+    cout << "Bubble sort runtime: " << chrono::duration_cast<chrono::nanoseconds>(end_bubble_sort - start_bubble_sort).count() << " nanoseconds.\n" << endl;
+    cout << "Merge sort runtime: " << chrono::duration_cast<chrono::nanoseconds>(end_merge_sort - start_merge_sort).count() << " nanoseconds.\n" << endl;
+    cout << "Quick sort runtime: " << chrono::duration_cast<chrono::nanoseconds>(end_quick_sort - start_quick_sort).count() << " nanoseconds.\n" << endl;
 }
