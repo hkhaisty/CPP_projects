@@ -3,4 +3,4 @@ project(Project)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Project main.cpp methods.h sorting.h)
+add_executable(Project main.cpp methods.h sorting.h array_generator.h)

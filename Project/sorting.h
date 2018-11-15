@@ -3,41 +3,35 @@
 //
 
 #include "methods.h"
+
 #ifndef PROJECT_SORTING_H
 #define PROJECT_SORTING_H
 
 
-void merge_sort(int arr[], int l, int r){
-    if (l < r)
-    {
-        int m = l+(r-1)/2;
+void merge_sort(int arr[], int l, int r) {
+    if (l < r) {
+        int m = l + (r - 1) / 2;
 
         merge_sort(arr, 1, m);
-        merge_sort(arr, m+1, r);
+        merge_sort(arr, m + 1, r);
 
         merge(arr, 1, m, r);
     }
 }
 
-void bubble_sort(int arr[], int n)
-{
-    int i , j;
-    for (i = 0; i < n-1; i++)
-    {
-        for (j = 0; i < n-i-1; j++)
-        {
-            if (arr[j] > arr[j+1])
-            {
-                swap(&arr[j], &arr[j+1]);
+void bubble_sort(int arr[], int n) {
+    int i, j;
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; i < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
             }
         }
     }
 }
 
-void quick_sort(int arr[], int low, int high)
-{
-    if (low < high)
-    {
+void quick_sort(int arr[], int low, int high) {
+    if (low < high) {
         int partition_index = partition(arr, low, high);
 
         quick_sort(arr, low, partition_index - 1);

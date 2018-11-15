@@ -1,8 +1,10 @@
-<<<<<<< HEAD
 ///Binary Tree
 #include <iostream>
 #include <string>
 #include <cmath>
+#include "BinaryTree.h"
+#include "BinaryTree.cpp"
+
 using namespace std;
 
         int main()
@@ -34,11 +36,11 @@ using namespace std;
             cout << "\nsearch 8 " << tree2.search(8) << endl;
             return 0;
         }
-=======
+
 #include <iostream>
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }
->>>>>>> ba83cc0e1ec5bbebd66ee404f66e4c14064175fc
+
