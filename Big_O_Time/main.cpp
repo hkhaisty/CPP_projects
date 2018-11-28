@@ -1,5 +1,6 @@
 #include <iostream>
 #include <time.h>
+#include <chrono>
 
 using namespace std;
 
@@ -20,21 +21,12 @@ void for_loops_a(int n_a, int sum_a) {
             sum_a++;
 }
 
-float make_a_clock(time_t t, int NA, int SUMA) {
-
-    t = clock();
-
-    for_loops_a(NA, SUMA);
-
-    printf("It took me %d clicks (%f seconds).\n", t, ((float) t) / CLOCKS_PER_SEC);
-}
-
 // problem c method
-int greatest_commom_denominator(int m, int n) {
+int greatest_common_denominator(int m, int n) {
     if (m % n == 0)
         return n;
     else
-        return greatest_commom_denominator(n, m % n);
+        return greatest_common_denominator(n, m % n);
 }
 
 int main() {
@@ -44,11 +36,17 @@ int main() {
     int sum_of_a_preacher_man = 0;
 
     while (main_method_n_for_problem_a != 0) {
-        time_t t;
+
+        auto start = std::chrono::system_clock::now();
         cout << "Enter an integer: ";
         cin >> main_method_n_for_problem_a;
 
-        make_a_clock(t, main_method_n_for_problem_a, sum_of_a_preacher_man);
+        for_loops_a(main_method_n_for_problem_a, sum_of_a_preacher_man);
+
+        auto end = std::chrono::system_clock::now();
+        auto elapsed = end - start;
+
+        std::cout << elapsed.count() << '\n';
     }
 
     cin.get();
