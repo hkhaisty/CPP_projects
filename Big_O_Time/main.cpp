@@ -1,5 +1,4 @@
 #include <iostream>
-#include <time.h>
 #include <chrono>
 
 using namespace std;
@@ -37,16 +36,27 @@ int main() {
 
     while (main_method_n_for_problem_a != 0) {
 
-        auto start = std::chrono::system_clock::now();
-        cout << "Enter an integer: ";
+        //prompt user to enter integer
+        cout << "Enter an integer, enter 0 to exit: ";
         cin >> main_method_n_for_problem_a;
 
+        //start the high resolution clock
+        auto start = std::chrono::high_resolution_clock::now();
+
+        //function call to prewritted for loops for question a
         for_loops_a(main_method_n_for_problem_a, sum_of_a_preacher_man);
 
-        auto end = std::chrono::system_clock::now();
-        auto elapsed = end - start;
+        //end the high resolution clock
+        auto end = std::chrono::high_resolution_clock::now();
 
-        std::cout << elapsed.count() << '\n';
+        //subtract initial value from final clock value
+        auto elapsed = (end - start);
+        auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+       // std::chrono::duration<double, std::milli> elapsed;
+
+        cout << "This calculation took ";
+        std::cout << elapsed.count();
+        cout << " seconds.";
     }
 
     cin.get();
