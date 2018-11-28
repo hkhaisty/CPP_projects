@@ -79,22 +79,37 @@ int main() {
     // problem c code*****************************************************************
 
     // problem d code*****************************************************************
+
+    //declare variable n used in for loop method
     int main_method_n_for_problem_d;
+    //declare and initialize sum variable used in for loop method
     int sum_of_cycles_problem_d = 0;
 
+    //print out which problem we're on now
     cout << "Welcome to problem d!\n";
 
+    //continuously run input/output until conditional (0) is satisfied
     while (main_method_n_for_problem_d != 0) {
 
+        //prompt user for input
         cout << "Enter an integer, enter 0 to exit: ";
+        //accept integer input
         cin >> main_method_n_for_problem_d;
+
+        //start high resolution clock
         auto start = std::chrono::high_resolution_clock::now();
+        //call for loops method for problem d
         for_loops_d(main_method_n_for_problem_d, sum_of_cycles_problem_d);
+        //stop high resolution clock
         auto end = std::chrono::high_resolution_clock::now();
 
+        //calculate time duration
         auto elapsed = (end - start);
+
+        //cast output to milliseconds
         auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
+        //print original microseconds output and time case millisecond output
         std::cout << "This loop took  " << elapsed.count() << " microseconds, or " << int_ms.count()
                   << " whole milliseconds to run. \n";
     }
@@ -106,21 +121,28 @@ int main() {
     cout << "This is the beginning of problem e. The final problem.\n";
 
     while (main_method_n_for_problem_e != 0) {
+
+        //prompt user for input
         cout << "Enter an integer, enter 0 to exit: ";
+        //accept user integer input
         cin >> main_method_n_for_problem_e;
 
+        //start high resolution clock
         auto start = std::chrono::high_resolution_clock::now();
-
+        //call for loops method
         for_loops_e(main_method_n_for_problem_e, sum_of_cycles_problem_e);
-
+        //end high resolution clock
         auto end = std::chrono::high_resolution_clock::now();
 
+        //calculate time elapsed
         auto elapsed = (end - start);
-
+        //cast from microseconds to milliseconds
         auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
+        //output original value in microseconds as well as in milliseconds
         std::cout << "This loop took " << elapsed.count() << " microseconds, or " << int_ms.count() << " whole milliseconds to run. \n";
     }
 
+    //print final message
     cout << "\nOur revels have now ended.";
 }
