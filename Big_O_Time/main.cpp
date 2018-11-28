@@ -27,6 +27,14 @@ void for_loops_d(int n_d, int sum_d) {
                 sum_d++;
 }
 
+void for_loops_e(int n_e, int sum_e) {
+    for (int i = 1; i < n_e; i++)
+        for (int j = 1; j < i * i; j++)
+            if (j % i == 0)
+                for (int k = 0; k < j; k++)
+                    sum_e++;
+}
+
 // problem c method
 int greatest_common_denominator(int m, int n) {
     if (m % n == 0)
@@ -95,9 +103,24 @@ int main() {
     int main_method_n_for_problem_e;
     int sum_of_cycles_problem_e;
 
-    for (int i = 1; i < main_method_n_for_problem_e; i++)
-        for (int j = 1; j < i * i; j++)
-            if (j % i == 0)
-                for (int k = 0; k < j; k++)
-                    sum_of_cycles_problem_e++;
+    cout << "This is the beginning of problem e. The final problem.\n";
+
+    while (main_method_n_for_problem_e != 0) {
+        cout << "Enter an integer, enter 0 to exit: ";
+        cin >> main_method_n_for_problem_e;
+
+        auto start = std::chrono::high_resolution_clock::now();
+
+        for_loops_e(main_method_n_for_problem_e, sum_of_cycles_problem_e);
+
+        auto end = std::chrono::high_resolution_clock::now();
+
+        auto elapsed = (end - start);
+
+        auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+        std::cout << "This loop took " << elapsed.count() << " microseconds, or " << int_ms.count() << " whole milliseconds to run. \n";
+    }
+
+    cout << "\nOur revels have now ended.";
 }
