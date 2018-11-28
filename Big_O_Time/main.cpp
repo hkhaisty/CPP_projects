@@ -27,29 +27,28 @@ float make_a_clock(time_t t, int NA, int SUMA) {
     for_loops_a(NA, SUMA);
 
     printf("It took me %d clicks (%f seconds).\n", t, ((float) t) / CLOCKS_PER_SEC);
-
 }
 
 // problem c method
-int gcd(int m, int n) {
+int greatest_commom_denominator(int m, int n) {
     if (m % n == 0)
         return n;
     else
-        return gcd(n, m % n);
+        return greatest_commom_denominator(n, m % n);
 }
 
 int main() {
     // problem a code
 
-    int NA = 1000;
-    int SUMA = 0;
+    int main_method_n_for_problem_a = 1000;
+    int sum_of_a_preacher_man = 0;
 
-    while (NA != 0) {
+    while (main_method_n_for_problem_a != 0) {
         time_t t;
         cout << "Enter an integer: ";
-        cin >> NA;
+        cin >> main_method_n_for_problem_a;
 
-        make_a_clock(t, NA, SUMA);
+        make_a_clock(t, main_method_n_for_problem_a, sum_of_a_preacher_man);
     }
 
     cin.get();
@@ -60,23 +59,23 @@ int main() {
     // problem c code
 
     // problem d code
-    int n_d;
-    int sum_d = 0;
+    int main_method_n_for_problem_d;
+    int sum_of_cycles_problem_d = 0;
 
-    for (int i = 0; i < n_d; i++)
+    for (int i = 0; i < main_method_n_for_problem_d; i++)
         for (int j = 0; j < i * i; j++)
             for (int k = 0; k < j; k++)
-                sum_d++;
+                sum_of_cycles_problem_d++;
 
     // problem e code
-    int n_e;
-    int sum_e;
+    int main_method_n_for_problem_e;
+    int sum_of_cycles_problem_e;
 
-    for (int i = 1; i < n_e; i++)
+    for (int i = 1; i < main_method_n_for_problem_e; i++)
         for (int j = 1; j < i * i; j++)
             if (j % i == 0)
                 for (int k = 0; k < j; k++)
-                    sum_e++;
+                    sum_of_cycles_problem_e++;
 
 
 }
