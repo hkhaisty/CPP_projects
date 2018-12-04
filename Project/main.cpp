@@ -8,14 +8,7 @@ using namespace std;
 
 typedef chrono::high_resolution_clock Clock;
 
-const int array_size1 = 20;
-int array_1[array_size1];
 
-const int array_size2 = 1000;
-int array_2[array_size2];
-
-const int array_size3 = 100000;
-int array_3[array_size3];
 
 int main() {
 
@@ -25,7 +18,7 @@ int main() {
 
    //start chrono clock and save time
     auto start_bubble_sort = Clock::now();
-    void bubble_sort(first_array);
+    static void bubble_sort(first_array);
     //end chrono clock and save time
     auto end_bubble_sort = Clock::now();
 

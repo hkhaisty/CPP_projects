@@ -19,7 +19,7 @@ void merge_sort(int arr[], int l, int r) {
     }
 }
 
-void bubble_sort(int arr[], int n) {
+static void bubble_sort(int arr[], int n) {
     int i, j;
     for (i = 0; i < n - 1; i++) {
         for (j = 0; i < n - i - 1; j++) {
@@ -28,6 +28,7 @@ void bubble_sort(int arr[], int n) {
             }
         }
     }
+    return;
 }
 
 void quick_sort(int arr[], int low, int high) {
