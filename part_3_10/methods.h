@@ -59,30 +59,24 @@ public :
         }
     }
 
-    void printing_results(mixed_number_operations first_value, mixed_number_operations second_value, mixed_number_operations result) {
+    void printing_results(mixed_number_operations first_value, mixed_number_operations second_value) {
 
-        cout << endl << "1. The FIRST complex number is: ";
-        first_value.
+        cout << endl << "1. The FIRST complex number is: "; first_value.
                 printNumber();
 
-        cout << endl << "2. The SECOND complex number is: ";
-        second_value.
+        cout << endl << "2. The SECOND complex number is: "; second_value.
                 printNumber();
 
         cout << endl << "3. The SUM of the complex numbers is: ";
-        result.
                 add_numbers(first_value, second_value);
 
         cout << endl << "4. The MULTIPLICATION of the complex numbers is: ";
-        result.
                 multiply_numbers(first_value, second_value);
 
         cout << endl << "5. The SUBTRACTION of the complex number is: ";
-        result.
                 subtract_numbers(first_value, second_value);
 
         cout << endl << "6. The DIVISION of the complex numbers is: ";
-        result.
                 divide_numbers(first_value, second_value);
 
         cout << endl;
