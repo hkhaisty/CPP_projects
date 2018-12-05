@@ -12,7 +12,7 @@ public :
         if (complex_number > 0) {
             cout << regular_number << "+" << complex_number << "i";
         } else {
-            cout <<  regular_number << "" << complex_number << "i";
+            cout << regular_number << "" << complex_number << "i";
         }
 
     }
@@ -23,7 +23,7 @@ public :
         if (complex_number > 0) {
             cout << regular_number << "+" << complex_number << "i";
         } else {
-            cout <<  regular_number << "" << complex_number << "i";
+            cout << regular_number << "" << complex_number << "i";
         }
 
     }
@@ -33,10 +33,10 @@ public :
         complex_number = one.complex_number - two.complex_number;
         if (complex_number > 0) {
             cout << setprecision(2);
-            cout << "Difference of the complex number is " << regular_number << "+" << complex_number << "i";
+            cout << regular_number << "+" << complex_number << "i";
         } else {
             cout << setprecision(2);
-            cout << "Difference of the complex number is " << regular_number << complex_number << "i";
+            cout << regular_number << complex_number << "i";
         }
     }
 
@@ -44,9 +44,9 @@ public :
         regular_number = one.regular_number * two.regular_number;
         complex_number = one.complex_number * two.complex_number;
         if (complex_number > 0) {
-            cout << "Multiplication of the complex number is " << regular_number << "+" << complex_number << "i";
+            cout << regular_number << "+" << complex_number << "i";
         } else {
-            cout << "Multiplication of the complex number is " << regular_number << "" << complex_number << "i";
+            cout << regular_number << "" << complex_number << "i";
         }
     }
 
@@ -57,9 +57,9 @@ public :
             regular_number = one.regular_number / two.regular_number;
             complex_number = one.complex_number / two.complex_number;
             if (complex_number > 0) {
-                cout << "Division of the complex number is " << regular_number << "+" << complex_number << "i";
+                cout << regular_number << "+" << complex_number << "i";
             } else {
-                cout << "Division of the complex number is " << regular_number << "" << complex_number << "i";
+                cout << regular_number << "" << complex_number << "i";
             }
         }
     }
@@ -80,20 +80,23 @@ int main() {
     cout << "Enter integer part of second complex number (*not* including the letter i): ";
     cin >> second.complex_number;
 
-    cout << endl << "The first complex number is ";
+    cout << endl << "1. The FIRST complex number is ";
     first.printNumber();
 
-    cout << endl << "The second complex number is ";
+    cout << endl << "2. The SECOND complex number is ";
     second.printNumber();
 
-    cout << endl << "The sum of the complex number is ";
+    cout << endl << "3. The SUM of the complex numbers is ";
     result.add_numbers(first, second);
 
+    cout << endl << "4. The MULTIPLICATION of the complex numbers is ";
     result.multiply_numbers(first, second);
-    cout << endl << endl;
 
+    cout << endl << "5. The SUBTRACTION of the complex number is ";
     result.subtract_numbers(first, second);
-    cout << endl << endl;
 
+    cout << endl << "6. The DIVISION of the complex numbers is ";
     result.divide_numbers(first, second);
+
+    cout << endl;
 }
