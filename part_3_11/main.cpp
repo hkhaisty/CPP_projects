@@ -1,49 +1,43 @@
 #include <iostream>
 #include <array>
+#include <vector>
 
 using namespace std;
+bool isEqual = true;
 
-void disjoint(int array[]) {
-
+void union_operator(std::vector<int> first, std::vector<int> second){
+    for (int i = 0; i < first.size(); i++){
+        for (int j = 0; j < second.size(); j++){
+            if (first.at(i) != second.at(j))
+            {
+                isEqual == false;
+            }
+        }
+    }
+    cout << isEqual;
 }
 
 int main() {
 
-    int array_size_1;
-    int array_size_2;
-    int myarray[0];
+    std::vector<int> vector_1;
+    std::vector<int> vector_2;
+    int input= -1;
 
-    cout << "Enter an array size: ";
-    cin >> array_size_1;
-
-    int first_array[array_size_1];
-    int user_input;
-
-    for (int i = 0; i < array_size_1; i++) {
-        cout << array_size_1 - i << " spaces left. Enter a value: ";
-        cin >> user_input;
-        first_array[i] = user_input;
+    cout << "We're going to populate our first list: \n";
+    while (input != 0) {
+        cout << "Enter an integer: ";
+        cin >> input;
+        vector_1.push_back(input);
     }
 
-    cout << "Your first set is now complete! Let's do another, shall we? \n";
-    cout << "Enter an array size: ";
+    input = -1;
 
-    cin >> array_size_2;
-    cout << endl;
-
-    int second_array[array_size_2];
-
-    for (int i = 0; i < array_size_2; i++) {
-        cout << array_size_2 - i << " spaces left. Enter a value: ";
-        cin >> user_input;
-        second_array[i] = user_input;
+    cout << "Now we're going to populate out second list: ";
+    while (input != 0) {
+        cout << "Enter an integer: ";
+        cin >> input;
+        vector_2.push_back(input);
     }
 
-    for (int i = 0; i <= array_size_1; i++) {
-        cout << first_array[i] << " ";
-    }
-
-    for (int i = 0; i <= array_size_2; i++) {
-        cout << second_array[i] << " ";
-    }
+    union_operator(vector_1, vector_2);
 }
