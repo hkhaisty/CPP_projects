@@ -11,9 +11,13 @@ using namespace std;
 template<class T>
 
 void printDeque(const deque<T> &lst, string s) {
+    //prints formatting for output
     cout << s << ": ";
+    //calls generic template type at first index
     typename deque<T>::const_iterator i = lst.begin();
+    //iterates through templated input
     for (; i != lst.end(); i++)
+        //outputs addressed value
         cout << *i << ' ';
     cout << endl;
 }
