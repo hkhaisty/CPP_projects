@@ -29,14 +29,24 @@ void print_methods(vector<int> vector_1, int user_int) {
     cout << "\n5. Final sorted heap (ascending order): ";
 
     //prints formatted list of sorted heap
-    for (unsigned i = 0; i < vector_1.size(); i++)
+    for (int i = 0; i < vector_1.size(); i++)
         cout << ' ' << vector_1[i];
 
     sort_heap(vector_1.end(), vector_1.begin());
     cout << "\n6. Final sorted heap (descending order): ";
 
-    for (unsigned i = vector_1.size(); i > 0; i--)
+    for (int i = vector_1.size()-1; i >= 0; i--)
         cout << ' '  << vector_1[i];
+
+    cout << endl;
+
+
+//    for (int i = 0; i < vector_1.size(); i++)
+//    {
+//        for (int j = 0; j < vector_1.size()/2; j++) {
+//            cout << vector_1[i] << endl;
+//        }
+//    }
 
     cout << '\n';
 }
