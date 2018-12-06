@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -21,6 +22,8 @@ struct node {
 static const int N = 1000;
 
 int main() {
+    clock_t start = clock();
+
     int i;
     //address head of node with new node of val 0
     node *head(new node(0)), *current(head);
@@ -58,5 +61,11 @@ int main() {
         }
         current = current->next;
     }
+
+    clock_t stop = clock();
+
+    double elapsed = (double)(stop-start) / CLOCKS_PER_SEC;
+
+    printf("\n\nTime elapsed: %.5f\n", elapsed);
     cout << endl;
 }
