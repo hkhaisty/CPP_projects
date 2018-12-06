@@ -84,7 +84,7 @@ Maze::Maze() : exitMarker('e'), entryMarker('m'), visited('.'),
     //sentinal value for char user input
     char user_input = 'D';
 
-    //sets conditional for continued maze creation 
+    //sets conditional for continued maze creation
     while (cin >> str) {
 
         //prompt user to exit maze (theoretically)
