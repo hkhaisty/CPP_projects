@@ -3,4 +3,4 @@ project(lab_12_1)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(lab_12_1 main.cpp)
+add_executable(lab_12_1 main.cpp edge.h tree.h graph.h)
