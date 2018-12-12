@@ -7,14 +7,22 @@ rail_car *train[MAX_SIZE];
 int car_count;
 
 int interpret_ar(string input);
+
 int interpret_trains(string input);
+
 int interpret_fb(string input);
-bool addToBack();
-bool addToFront();
-void removeFromBack();
-void removeFromFront();
-void shiftArrayRight();
-void shiftArrayLeft();
+
+bool add_to_front_of_train();
+
+void take_off_front_of_train();
+
+bool add_to_back_of_train();
+
+void take_off_back_of_train();
+
+void shift_array_to_right();
+
+void shift_array_to_left();
 
 
 int main() {
@@ -23,48 +31,63 @@ int main() {
     bool loop;
     do {
         if (car_count == 0) {
-            loop = addToBack();
+            loop = add_to_back_of_train();
             cout << "There are " << car_count << " cars in the array."
-                 << endl; //adds car top array when no cars in array
+                 << endl;
         } else {
-            cout << "Type 'add' to add a car, 'remove' to remove a car, or 'e' to exit" << endl;
+            cout << "Type 'add' to add a car, 'remove' to remove a car, or 'exit' to exit" << endl;
             cin >> input;
             switch (interpret_ar(input)) {
-                case 1: //removing
-                    if (car_count == 1) { //best wayu to remove when there is only one car
-                        removeFromBack();
+                //this removes car from array
+                case 1:
+                    //if there is only one car, this removes it from the train
+                    if (car_count == 1) {
+                        //function call to remove car
+                        take_off_back_of_train();
+                        //prints out result after function call
                         cout << "There are " << car_count << " cars in the array." << endl;
-                    } else { //removing cars when more than 1
+                    } else {
+                        //if there is more than one car in the array, prompt user to pick front or back
                         cout << "Would you like to remove a car at the front or back? (e to exit)" << endl;
+                        //accept user input
                         cin >> input;
+                        //switch statement to determine whether front or back should be taken off
                         switch (interpret_fb(input)) { //option menu
                             case 0:
-                                removeFromFront();
+                                //removes car from front of train
+                                take_off_front_of_train();
+                                //prints result of removing car
                                 cout << "There are " << car_count << " cars in the array." << endl;
+                                //break so we don't continue running through cases
                                 break;
                             case 1:
-                                removeFromBack();
+                                //removes car from back of train
+                                take_off_back_of_train();
+                                //prints result of removing car
                                 cout << "There are " << car_count << " cars in the array." << endl;
+                                //break
                                 break;
                             case -1:
+                                //breaks if input is invalid
                                 loop = false;
-                                break; //exit
+                                break;
                             default:
                                 cout << "Invalid input. " << endl;
                         }
                         break;
-                        case 0: //adding
+                        case 0:
+                            //prompt user to add trains to front
                             cout << "type 'front' to add a car to the front of your train "
                                     "\ntype 'back' to add a car to the back of the train"
-                                    "\ntype 'e' to exit" << endl;
+                                    "\ntype 'exit' to exit" << endl;
                         cin >> input;
                         switch (interpret_fb(input)) { //option menu
                             case 0:
-                                addToFront();
+                                add_to_front_of_train();
                                 cout << "There are " << car_count << " cars in the array." << endl;
                                 break;
                             case 1:
-                                addToBack();
+                                add_to_back_of_train();
                                 cout << "There are " << car_count << " cars in the array." << endl;
                                 break;
                             case -1:
@@ -93,7 +116,7 @@ int main() {
 int interpret_ar(string input) { //interprets input for add/remove
     if (input == "add") return 0;
     else if (input == "remove") return 1;
-    else if (input == "e") return -1;
+    else if (input == "exit") return -1;
     else return 2;
 }
 
@@ -102,25 +125,25 @@ int interpret_trains(string input) { //interprets input for car picking
     else if (input == "box") return 1;
     else if (input == "tank") return 2;
     else if (input == "caboose") return 3;
-    else if (input == "e") return -1;
-    else if (input == "h") return -2;
+    else if (input == "exit") return -1;
+    else if (input == "help") return -2;
     else return 4;
 }
 
 int interpret_fb(string input) { //interprets input for front/back
     if (input == "front") return 0;
     else if (input == "back") return 1;
-    else if (input == "e") return -1;
+    else if (input == "exit") return -1;
     else return 2;
 }
 
-bool addToBack() { //adds car to back
+bool add_to_back_of_train() { //adds car to back
     cout << "What type of rail car would you like to add?"
             "\ntype 'engine' to add an engine car"
             "\ntype 'box' to add a box car"
             "\ntype 'caboose' to add a caboose car"
             "\ntype 'tank' to add a tank car\n"
-            "(e to exit, h for help)" << endl;
+            "('exit' to exit, 'help' for help)" << endl;
     string input;
     cin >> input;
     switch (interpret_trains(input)) {
@@ -148,33 +171,33 @@ bool addToBack() { //adds car to back
     return true;
 }
 
-bool addToFront() { //adds car to back
+bool add_to_front_of_train() { //adds car to back
     cout << "What type of rail car would you like to add?"
             "\ntype 'Engine' to add an engine car"
             "\ntype 'Box' to add a box car"
             "\ntype 'Caboose' to add a caboose car"
             "\ntype 'Tank' to add a tank car"
-            "\n(e to exit, h for help)" << endl;
+            "\n('exit' to exit, 'help' for help)" << endl;
     string input;
     cin >> input;
     switch (interpret_trains(input)) {
         case 0:
-            shiftArrayRight();
+            shift_array_to_right();
             train[0] = new engine;
             car_count++;
             break;
         case 1:
-            shiftArrayRight();
+            shift_array_to_right();
             train[0] = new box_car;
             car_count++;
             break;
         case 2:
-            shiftArrayRight();
+            shift_array_to_right();
             train[0] = new tank_car;
             car_count++;
             break;
         case 3:
-            shiftArrayRight();
+            shift_array_to_right();
             train[0] = new caboose;
             car_count++;
             break;
@@ -190,17 +213,17 @@ bool addToFront() { //adds car to back
     return true;
 }
 
-void removeFromFront() { //removes car from front
+void take_off_front_of_train() { //removes car from front
     delete train[0];
-    shiftArrayLeft;
+    shift_array_to_left;
     --car_count;
 }
 
-void removeFromBack() { //removes car from back
+void take_off_back_of_train() { //removes car from back
     delete train[--car_count];
 }
 
-void shiftArrayRight() { //shifts array right for removal
+void shift_array_to_right() { //shifts array right for removal
     if (car_count == MAX_SIZE) cout << "Maximum car limit reached." << endl;
     else {
         for (int i = car_count - 1; i >= 0; i--) {
@@ -209,7 +232,7 @@ void shiftArrayRight() { //shifts array right for removal
     }
 }
 
-void shiftArrayLeft() { //shift array left for removal
+void shift_array_to_left() { //shift array left for removal
     for (int i = 0; i < car_count - 1; i++) {
         train[i] = train[i + 1];
     }
